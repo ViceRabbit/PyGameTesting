@@ -15,4 +15,4 @@ while active:
       print('Active went false! Code should be terminated')
       active = False # window should be closed as well as the code
 
-# another git update from pycharm uwu
+# another oneeeee hmmmmm?????
