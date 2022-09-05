@@ -8,6 +8,7 @@ gameScreen = pygame.display.set_mode((500, 500))
 
 # VVVVV so ik replit doesnt close window but its suggested so python doesnt automatically end the code/window
 # aka * Game Loop *
+
 active = True
 while active:
   for event in pygame.event.get(): # we need a function to close the window!!!!
@@ -15,6 +16,3 @@ while active:
       print('Active went false! Code should be terminated')
       active = False # window should be closed as well as the code
 
-# ok so now sync from pycharm to replit
-# 1 pushing from pycharm to github
-# Recieved tyyyy - Replit!
