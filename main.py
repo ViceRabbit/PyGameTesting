@@ -17,3 +17,4 @@ while active:
 
 # ok so now sync from pycharm to replit
 # 1 pushing from pycharm to github
+# Recieved tyyyy - Replit!
