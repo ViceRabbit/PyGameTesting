@@ -19,3 +19,7 @@ while active:
     if event.type == pygame.QUIT: # so basically pygame.QUIT is the closing window event thing and we chec
       print('Active went false! Code should be terminated')
       active = False # window should be closed as well as the code
+  gameScreen.fill((255, 0, 0)) # background fill, ensure its in a tuple: .fill((R, G, B))
+
+
+
