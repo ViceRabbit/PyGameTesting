@@ -15,4 +15,4 @@ while active:
       print('Active went false! Code should be terminated')
       active = False # window should be closed as well as the code
 
-# another oneeeee hmmmmm?????
+# another oneeeee hmmmmm????? ---- from replit uwwu
