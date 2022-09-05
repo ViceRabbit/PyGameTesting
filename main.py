@@ -15,5 +15,5 @@ while active:
       print('Active went false! Code should be terminated')
       active = False # window should be closed as well as the code
 
-# another oneeeee hmmmmm????? ---- from replit uwwu
-# ANOTHER ONE?????? REPLIT
+# ok so now sync from pycharm to replit
+# 1 pushing from pycharm to github
