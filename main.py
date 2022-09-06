@@ -13,8 +13,8 @@ pygame.display.set_icon(icon)
 
 # P2 - Defining Player Object (for now i kept as carrot lo)
 carrotImg = pygame.image.load('carrot.png') # here im loading my carrot as its an image
-playerX = 220 # we dont know size of img well, 250 is half of screen size, so lowered it to 220
-playerY = 360 # close to 500, as we want it below
+playerX = 210 # we dont know size of img well, 250 is half of screen size, so lowered it to 220
+playerY = 250 # close to 500, as we want it below
 
 def player():
   # VVV this should take 2 parameters: thing to draw, and tuple of x and y coords, .blit basically means to draw; we
@@ -25,7 +25,7 @@ def player():
 # aka * Game Loop *
 active = True
 while active:
-  gameScreen.fill((255, 255, 255)) # background fill, ensure its in a tuple: .fill((R, G, B))
+  gameScreen.fill((50, 50, 50)) # background fill, ensure its in a tuple: .fill((R, G, B))
   # P2: game.Screen should be filled BEFORE any blits! because pygame is drawing them in order!
   for event in pygame.event.get(): # we need a function to close the window!!!!
     if event.type == pygame.QUIT: # so basically pygame.QUIT is the closing window event thing and we chec
