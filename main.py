@@ -16,15 +16,16 @@ carrotImg = pygame.image.load('carrot.png') # here im loading my carrot as its a
 playerX = 210 # we dont know size of img well, 250 is half of screen size, so lowered it to 220
 playerY = 250 # close to 500, as we want it below
 
-def player():
+def player(x, y):
   # VVV this should take 2 parameters: thing to draw, and tuple of x and y coords, .blit basically means to draw; we
   # are drawing img of carrot on our screen (aka surface)
-  gameScreen.blit(carrotImg, (playerX, playerY))
+  gameScreen.blit(carrotImg, (x, y))
 
 # VVVVV so ik replit doesnt close window but its suggested so python doesnt automatically end the code/window
 # aka * Game Loop *
 active = True
 while active:
+  playerX += 0.1
   gameScreen.fill((50, 50, 50)) # background fill, ensure its in a tuple: .fill((R, G, B))
   # P2: game.Screen should be filled BEFORE any blits! because pygame is drawing them in order!
   for event in pygame.event.get(): # we need a function to close the window!!!!
@@ -34,7 +35,7 @@ while active:
 
   # also gameScreen.fill can be above for event, to prevent any miss-conceptions!
 
-  player() # We want it to update (carrot) everytime!
+  player(playerX, playerY) # We want it to update (carrot) everytime!
   pygame.display.update() # without this, any changes wouldnt occur as the display isnt updating!!
 
 
