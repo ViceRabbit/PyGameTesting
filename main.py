@@ -30,7 +30,7 @@ while active:
     playerY -= 0.1
   else:
     playerY += 0.1
-  if playerY > 500 or playerY < 0:
+  if playerY > 430 or playerY < 0:
     inverse = not inverse
   gameScreen.fill((50, 50, 50)) # background fill, ensure its in a tuple: .fill((R, G, B))
   # P2: game.Screen should be filled BEFORE any blits! because pygame is drawing them in order!
