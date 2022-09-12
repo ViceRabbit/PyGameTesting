@@ -24,8 +24,14 @@ def player(x, y):
 # VVVVV so ik replit doesnt close window but its suggested so python doesnt automatically end the code/window
 # aka * Game Loop *
 active = True
+inverse = True
 while active:
-  playerX += 0.1
+  if inverse:
+    playerY -= 0.1
+  else:
+    playerY += 0.1
+  if playerY > 500 or playerY < 0:
+    inverse = not inverse
   gameScreen.fill((50, 50, 50)) # background fill, ensure its in a tuple: .fill((R, G, B))
   # P2: game.Screen should be filled BEFORE any blits! because pygame is drawing them in order!
   for event in pygame.event.get(): # we need a function to close the window!!!!
