@@ -27,9 +27,9 @@ active = True
 inverse = True
 while active:
   if inverse:
-    playerY -= 0.1
+    playerY -= 1
   else:
-    playerY += 0.1
+    playerY += 1
   if playerY > 430 or playerY < 0:
     inverse = not inverse
   gameScreen.fill((50, 50, 50)) # background fill, ensure its in a tuple: .fill((R, G, B))
@@ -38,6 +38,9 @@ while active:
     if event.type == pygame.QUIT: # so basically pygame.QUIT is the closing window event thing and we chec
       print('Active went false! Code should be terminated')
       active = False # window should be closed as well as the code
+    if event.type == pygame.KEYDOWN:
+      if event.key == pygame.K_LEFT:
+        print('u pressed the funny left key')
 
   # also gameScreen.fill can be above for event, to prevent any miss-conceptions!
 
