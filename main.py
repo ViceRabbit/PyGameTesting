@@ -19,7 +19,7 @@ carrotImg = pygame.image.load('carrot.png') # here im loading my carrot as its a
 playerX = 210 # we dont know size of img well, 250 is half of screen size, so lowered it to 220
 playerY = 250 # close to 500, as we want it below
 playerXChange = 5
-playerYChange = 0
+playerYChange = 5
 definiteX = 1
 definiteY = 1
 
@@ -51,8 +51,8 @@ def gameTextCoordinates(fontp, textp, color, loc):
 # Boundary; X (LEFT): -4, X (RIGHT): 469, Y (UP): -6, Y (DOWN): 460
 BoundXLeft = -4
 BoundXRight = 469
-BoundXUp = -6
-BoundXDown = 460
+BoundYUp = -6
+BoundYDown = 460
 
 # make so it doesnt auto close code
 # aka * Game Loop * 225 281
@@ -60,12 +60,18 @@ active = True
 while active:
   gameScreen.fill((50, 50, 50)) # background fill, ensure its in a tuple: .fill((R, G, B))
   playerX += playerXChange
+  playerY += playerYChange
   if playerX + playerXChange < BoundXLeft or playerX + playerXChange > BoundXRight:
     print(f'Hit boundary!; XChange = {playerXChange}')
     definiteX *= -1
     randomints = np.sort(np.array([1*definiteX, 10*definiteX]))
     playerXChange = np.random.randint(low=randomints[0], high=randomints[1])
-    
+  if playerY + playerYChange < BoundYUp or playerY + playerYChange > BoundYDown:
+    print(f'Hit boundary!; YChange = {playerYChange}')
+    definiteY *= -1
+    randomints = np.sort(np.array([1*definiteY, 10*definiteY]))
+    playerYChange = np.random.randint(low=randomints[0], high=randomints[1])
+
     # generate two np randoms, so like np.random.randint(1, 10) for right but liek for left its like (-1, -10)
 
   # P2: game.Screen should be filled BEFORE any blits! because pygame is drawing them in order!
