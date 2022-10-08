@@ -1,5 +1,6 @@
 import pygame
 import os
+import numpy as np
 # reference tutorial: https://www.youtube.com/watch?v=FfWpgLFMI7w&t=414s&ab_channel=freeCodeCamp.org
 # VVVVV THIS right here initalizes pygame, this is importanto everytime
 os.environ['SDL_AUDIODRIVER'] = 'disk'
@@ -17,12 +18,16 @@ pygame.display.set_icon(icon)
 carrotImg = pygame.image.load('carrot.png') # here im loading my carrot as its an image
 playerX = 210 # we dont know size of img well, 250 is half of screen size, so lowered it to 220
 playerY = 250 # close to 500, as we want it below
+playerXChange = 5
+playerYChange = 0
+definiteX = 1
+definiteY = 1
 
 rectX = 139
 rectY = 287
-
 rectXChange = 0
 rectYChange = 0
+
 
 clock = pygame.time.Clock()
 
@@ -40,19 +45,29 @@ def gameTextCoordinates(fontp, textp, color, loc):
   gameScreen.blit(gametext, loc)
 
 
+# Concept; picks 2 random int from 1-10, one being x and one being y. the rect increments by the specific int given within the x or the y. if the rect hits the boundary, 
+# the random int does a respin, vice-versa with left/right/up/down  
+
+# Boundary; X (LEFT): -4, X (RIGHT): 469, Y (UP): -6, Y (DOWN): 460
+BoundXLeft = -4
+BoundXRight = 469
+BoundXUp = -6
+BoundXDown = 460
+
 # make so it doesnt auto close code
 # aka * Game Loop * 225 281
 active = True
-inverse = True
-
 while active:
-  if inverse:
-    playerY -= 1
-  else:
-    playerY += 1
-  if playerY > 430 or playerY < 0:
-    inverse = not inverse
   gameScreen.fill((50, 50, 50)) # background fill, ensure its in a tuple: .fill((R, G, B))
+  playerX += playerXChange
+  if playerX + playerXChange < BoundXLeft or playerX + playerXChange > BoundXRight:
+    print(f'Hit boundary!; XChange = {playerXChange}')
+    definiteX *= -1
+    randomints = np.sort(np.array([1*definiteX, 10*definiteX]))
+    playerXChange = np.random.randint(low=randomints[0], high=randomints[1])
+    
+    # generate two np randoms, so like np.random.randint(1, 10) for right but liek for left its like (-1, -10)
+
   # P2: game.Screen should be filled BEFORE any blits! because pygame is drawing them in order!
   for event in pygame.event.get(): # we need a function to close the window!!!!
     if event.type == pygame.QUIT: # so basically pygame.QUIT is the closing window event thing and we chec
@@ -78,11 +93,11 @@ while active:
    rectX += rectXChange
   if rectY + rectYChange > -6 and rectY + rectYChange < 460:
     rectY += rectYChange
-  
+
   player(playerX, playerY) # We want it to update (carrot) everytime!
   rectangle(rectX, rectY)
   gameTextCoordinates(gamefont, f"Loc: x:{rectX}, y:{rectY}", (0, 255, 0), (29, 477))
-  print(rectX, rectY, flush=False, end='\r')
+
   #pygame.draw.rect(gameScreen, (0, 255, 0), pygame.Rect())
   # x, y = pygame.mouse.get_pos()
   # print(x, y, flush=False, end='\r')
